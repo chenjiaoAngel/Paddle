@@ -48,6 +48,7 @@ class AverageAccumulatesOp : public framework::OperatorWithKernel {
   using framework::OperatorWithKernel::OperatorWithKernel;
 
   void InferShape(framework::InferShapeContext* ctx) const override {
+<<<<<<< HEAD
     PADDLE_ENFORCE(
         ctx->HasInput("param"),
         "Input (param) of average_accumulates op should not be null.");
@@ -89,6 +90,66 @@ class AverageAccumulatesOp : public framework::OperatorWithKernel {
     PADDLE_ENFORCE(
         ctx->HasOutput("out_num_updates"),
         "Output (num_updates) of average_accumulates op should not be null.");
+=======
+    PADDLE_ENFORCE_EQ(
+        ctx->HasInput("param"), true,
+        platform::errors::InvalidArgument(
+            "Input (param) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasInput("in_sum_1"), true,
+        platform::errors::InvalidArgument(
+            "Input (sum_1) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasInput("in_sum_2"), true,
+        platform::errors::InvalidArgument(
+            "Input (sum_2) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasInput("in_sum_3"), true,
+        platform::errors::InvalidArgument(
+            "Input (sum_3) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasInput("in_num_accumulates"), true,
+        platform::errors::InvalidArgument(
+            "Input (in_num_accumulates) of average_accumulates op should "
+            "not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasInput("in_old_num_accumulates"), true,
+        platform::errors::InvalidArgument(
+            "Input (old_num_accumulates) of average_accumulates op "
+            "should not be null."));
+    PADDLE_ENFORCE_EQ(ctx->HasInput("in_num_updates"), true,
+                      platform::errors::InvalidArgument(
+                          "Input (num_updates) of average_accumulates op "
+                          "should not be null."));
+
+    PADDLE_ENFORCE_EQ(
+        ctx->HasOutput("out_sum_1"), true,
+        platform::errors::InvalidArgument(
+            "Output (sum_1) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasOutput("out_sum_2"), true,
+        platform::errors::InvalidArgument(
+            "Output (sum_2) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasOutput("out_sum_3"), true,
+        platform::errors::InvalidArgument(
+            "Output (sum_3) of average_accumulates op should not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasOutput("out_num_accumulates"), true,
+        platform::errors::InvalidArgument(
+            "Output (num_accumulates) of average_accumulates op should "
+            "not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasOutput("out_num_accumulates"), true,
+        platform::errors::InvalidArgument(
+            "Output (num_accumulates) of average_accumulates op should "
+            "not be null."));
+    PADDLE_ENFORCE_EQ(
+        ctx->HasOutput("out_num_updates"), true,
+        platform::errors::InvalidArgument(
+            "Output (old_num_accumulates) of average_accumulates op "
+            "should not be null."));
+>>>>>>> e8311ab... fix format. test=develop
 
     auto in_dim = ctx->GetInputDim("param");
 
