@@ -55,6 +55,9 @@ x_float64 = fluid.data(name='x_float64', shape=[12, 10], dtype='float64')
 self.assertRaises(TypeError, fluid.clip, x_float64, 'all')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 7b62cf9... fix format. test=develop
+=======
 >>>>>>> 7b62cf9... fix format. test=develop
 =======
 >>>>>>> 7b62cf9... fix format. test=develop
